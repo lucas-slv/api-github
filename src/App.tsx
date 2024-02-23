@@ -1,12 +1,12 @@
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter } from "react-router-dom";
 
-import { AppRoutes } from './routes'
+import { AppRoutes } from "./routes";
 
-import { Theme } from './styles/Theme'
-import { GlobalStyle } from './styles/global'
-import { Normalize } from 'styled-normalize'
+import { Theme } from "./styles/Theme";
+import { GlobalStyle } from "./styles/global";
+import { Normalize } from "styled-normalize";
 
-export default function App() {
+export function App() {
   return (
     <BrowserRouter>
       <Theme>
@@ -15,5 +15,5 @@ export default function App() {
         <Normalize />
       </Theme>
     </BrowserRouter>
-  )
+  );
 }

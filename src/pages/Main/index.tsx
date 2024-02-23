@@ -1,6 +1,6 @@
 import { Container } from './styles'
 
-export default function Main() {
+export function MainPage() {
   return (
     <Container>
       <img
