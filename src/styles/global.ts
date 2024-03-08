@@ -8,6 +8,5 @@ export const GlobalStyle = createGlobalStyle`
     background: ${(props) => props.theme.colors.background};
     color: ${(props) => props.theme.colors.white};
     font-family: ${(props) => props.theme.fontFamily.sans};
-    padding: 1rem;
   }
 `;
