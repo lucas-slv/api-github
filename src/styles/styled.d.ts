@@ -32,6 +32,7 @@ declare module "styled-components" {
       container: string;
       text: string;
       metalDark: string;
+      champagneDark: string;
     };
     fontFamily: {
       heading: string;

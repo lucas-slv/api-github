@@ -1,13 +1,18 @@
 import { Cleaner, Container, Selector } from "./styles";
 
-export function Filter() {
-  const langs = [
-    { name: "Javascript", count: 5, color: "#FCC419" },
-    { name: "PHP", count: 1, color: "#7E5CEF" },
-    { name: "Typescript", count: 3, color: "#2b3de7" },
-  ];
+interface LanguageProps {
+  name: string;
+  count: number;
+  color?: string;
+}
+interface FilterProps {
+  languages: LanguageProps[]
+}
 
-  const selectors = langs.map(({ name, color, count }) => {
+
+export function Filter({languages}: FilterProps) {
+
+  const selectors = languages.map(({ name, color, count }) => {
     return (
       <Selector key={name.toLowerCase()} color={color}>
         <span>{name}</span>

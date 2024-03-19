@@ -37,6 +37,7 @@ export const theme: DefaultTheme = {
     container: "#2d2d2d",
     text: "#fff",
     metalDark: "#7f8c8d",
+    champagneDark: "#bdc3c7",
   },
   fontFamily: {
     heading: ["IBM Plex Sans", "sans-serif"].join(","),
