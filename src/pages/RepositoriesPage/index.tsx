@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { getLangsFrom } from "../../services/api";
 import { Filter } from "./Filter";
 import { Profile } from "./Profile";
@@ -15,77 +16,137 @@ interface UserProps {
   location: string;
 }
 
-interface RepoProps {
+interface RepositorieProps {
+  id: string;
   name: string;
   html_url: string;
   description: string | null;
   language: string | null;
 }
 
-
+// export interface LanguageProps {
+//   name: string;
+//   count: number;
+//   color: string;
+// }
 
 export function RepositoriesPage() {
+  const [currentLanguage, setCurrentLanguage] = useState("");
+
   const user: UserProps = {
-    login: "lucas-slv",
-    avatar_url: "https://avatars.githubusercontent.com/u/123598525?v=4",
-    followers: 2,
-    following: 2,
-    name: "Lucas Mendes",
-    company: "Microsoft",
+    login: "bastosmatheus",
+    avatar_url: "https://avatars.githubusercontent.com/u/109998987?v=4",
+    followers: 1,
+    following: 4,
+    name: "Matheus",
+    company: null,
     blog: "",
-    location: "Brazil/ São Paulo",
+    location: "São Paulo, Brasil",
   };
 
-  const repositories: RepoProps[] = [
+  const repositories: RepositorieProps[] = [
     {
-      name: "Calculadora--IMC",
-      html_url: "https://github.com/lucas-slv/Calculadora--IMC",
-      description: null,
-      language: "CSS",
-    },
-    {
-      name: "dev-barbershop",
-      html_url: "https://github.com/lucas-slv/dev-barbershop",
-      description:
-        "Este repositório contém o código-fonte e os recursos para uma elegante e moderna página de destino para cabeleireiros ou barbearias. Projetada com foco na apresentação visual atraente e facilidade de navegação, a Landing Page Dev Barbearia oferece uma presença online profissional para salões de beleza.",
+      id: "1",
+      name: "7daysofcode",
+      html_url: "https://github.com/bastosmatheus/7daysofcode",
+      description: "landing page feita atraves de um layout no figma",
       language: "HTML",
     },
     {
-      name: "devlinks",
-      html_url: "https://github.com/lucas-slv/devlinks",
+      id: "2",
+      name: "api",
+      html_url: "https://github.com/bastosmatheus/api",
       description: null,
+      language: "JavaScript",
+    },
+    {
+      id: "3",
+      name: "api-control-stock",
+      html_url: "https://github.com/bastosmatheus/api-control-stock",
+      description: null,
+      language: "TypeScript",
+    },
+    {
+      id: "4",
+      name: "bastosmatheus",
+      html_url: "https://github.com/bastosmatheus/bastosmatheus",
+      description: null,
+      language: null,
+    },
+    {
+      id: "5",
+      name: "backend-challenges",
+      html_url: "https://github.com/bastosmatheus/backend-challenges",
+      description:
+        "repositório de desafios tecnicos que fiz/estou fazendo para treinar meus conhecimentos. ",
+      language: "TypeScript",
+    },
+    {
+      id: "6",
+      name: "typescript-estudo",
+      html_url: "https://github.com/bastosmatheus/typescript-estudo",
+      description: null,
+      language: "TypeScript",
+    },
+    {
+      id: "7",
+      name: "calendario",
+      html_url: "https://github.com/bastosmatheus/calendario",
+      description:
+        "calendário feito com algumas funcionalidades em JS, codificado através de um layout do figma",
+      language: "HTML",
+    },
+    {
+      id: "8",
+      name: "challengerfrontendmentor",
+      html_url: "https://github.com/bastosmatheus/challengerfrontendmentor",
+      description: "Criação de Landing Page através do desafio do Frontend Mentor",
+      language: "HTML",
+    },
+    {
+      id: "9",
+      name: "csharp-balta.io",
+      html_url: "https://github.com/bastosmatheus/csharp-balta.io",
+      description: "aprendendo os fundamentos de C# no curso balta.io",
+      language: "C#",
+    },
+    {
+      id: "10",
+      name: "pitaco-restaurante",
+      html_url: "https://github.com/bastosmatheus/pitaco-restaurante",
+      description: null,
+      language: "TypeScript",
+    },
+    {
+      id: "11",
+      name: "projeto-coffeclub",
+      html_url: "https://github.com/bastosmatheus/projeto-coffeclub",
+      description: "Primeiro projeto feito por mim, tô no inicio ainda, mas curti",
       language: "CSS",
     },
     {
-      name: "Repo 4",
-      html_url: "https://github.com/lucas-slv/devlinks",
-      description: null,
-      language: "TypeScript",
-    },
-    {
-      name: "Repo 5",
-      html_url: "https://github.com/lucas-slv/devlinks",
-      description: null,
-      language: "TypeScript",
-    },
-    {
-      name: "Repo 6",
-      html_url: "https://github.com/lucas-slv/devlinks",
-      description: null,
-      language: "TypeScript",
+      id: "12",
+      name: "projeto-loginworms",
+      html_url: "https://github.com/bastosmatheus/projeto-loginworms",
+      description: "uma página de login feita com HTML & CSS",
+      language: "CSS",
     },
   ];
 
-  const languages = getLangsFrom(repositories)
+  const languages = getLangsFrom(repositories);
+
+  function onClickFilter(language: string) {
+    setCurrentLanguage(language);
+  }
 
   return (
     <Container>
       <Sidebar>
         <Profile user={user} />
-        <Filter languages={languages} />
+        <Filter languages={languages} currentLanguage={currentLanguage} onClick={onClickFilter} />
       </Sidebar>
       <Main>
-        <Repositories />
+        <Repositories repositories={repositories} currentLanguage={currentLanguage} />
       </Main>
     </Container>
   );

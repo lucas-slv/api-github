@@ -1,17 +1,28 @@
+import { langColors } from "../../../../services/config";
 import { Container, Description, Footer, Lang, Link, Name } from "./styles";
 
-export function Repository() {
+interface RepositoryProps {
+  repository: {
+    id: string;
+    name: string;
+    html_url: string;
+    description: string | null;
+    language: string | null;
+  };
+}
+
+export function Repository({ repository }: RepositoryProps) {
+  const color = langColors[(repository.language && repository.language.toLowerCase()) || ""];
+
   return (
-    <Container color='#FCC419'>
-      <Name>Teste</Name>
-      <Description>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint voluptatem vero suscipit iste
-        debitis error cum doloribus rerum esse accusamus unde, tempore, porro saepe? Unde alias
-        excepturi esse iure! Eius?
-      </Description>
-      <Footer color='#FCC419'>
-        <Lang>PHP</Lang>
-        <Link>Ver</Link>
+    <Container color={color}>
+      <Name>{repository.name}</Name>
+      <Description>{repository.description}</Description>
+      <Footer color={color}>
+        <Lang>{repository.language}</Lang>
+        <Link href={repository.html_url} target='_blank'>
+          Ver
+        </Link>
       </Footer>
     </Container>
   );

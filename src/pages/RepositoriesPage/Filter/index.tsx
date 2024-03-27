@@ -6,15 +6,20 @@ interface LanguageProps {
   color?: string;
 }
 interface FilterProps {
-  languages: LanguageProps[]
+  languages: LanguageProps[];
+  currentLanguage: string;
+  onClick: (language: string) => void;
 }
 
-
-export function Filter({languages}: FilterProps) {
-
+export function Filter({ languages, currentLanguage, onClick }: FilterProps) {
   const selectors = languages.map(({ name, color, count }) => {
     return (
-      <Selector key={name.toLowerCase()} color={color}>
+      <Selector
+        key={name.toLowerCase()}
+        color={color}
+        className={currentLanguage === name ? "selected" : ""}
+        onClick={() => onClick && onClick(name)}
+      >
         <span>{name}</span>
         <span>{count}</span>
       </Selector>
@@ -24,7 +29,7 @@ export function Filter({languages}: FilterProps) {
   return (
     <Container>
       {selectors}
-      <Cleaner>Limpar</Cleaner>
+      <Cleaner onClick={() => onClick && onClick("")}>Limpar</Cleaner>
     </Container>
   );
 }
