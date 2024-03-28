@@ -28,12 +28,15 @@ export const Main = styled.section`
   width: 100%;
   overflow-y: hidden;
   padding: 40px;
+  box-sizing: border-box;
 
   @media screen and (max-width: ${(props) => props.theme.breakpoints.md}) {
     height: 100%;
+    padding: 20px;
   }
 
   @media screen and (max-width: ${(props) => props.theme.breakpoints.sm}) {
     padding: 40px 20px;
+    padding: 15px;
   }
 `;

@@ -45,7 +45,7 @@ export function Profile({ user }: ProfileProps) {
         {user.blog && (
           <Data>
             <icon.MdLink size={20} />
-            <a href={user.blog}>{user.blog}</a>
+            <a href={user.blog} target="_blank" rel="noreferrer">{user.blog}</a>
           </Data>
         )}
       </Inner>
