@@ -4,6 +4,31 @@ export const Container = styled.div`
   padding: 1rem;
 `;
 
+export const BackButton = styled.button`
+  background: none;
+  color: ${(props) => props.theme.colors.text};
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  border: none;
+
+  &::after {
+    content: "Voltar";
+    font-size: ${(props) => props.theme.fontSize.lg};
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0s linear 0.3s;
+  }
+
+  &:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+  }
+`;
+
 export const Header = styled.div`
   display: flex;
   flex-direction: column;

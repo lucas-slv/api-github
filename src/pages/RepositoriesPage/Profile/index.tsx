@@ -1,4 +1,4 @@
-import { Container, Header, Login, Picture, UserName, Inner, Data } from "./styles";
+import { Container, Header, Login, Picture, UserName, Inner, Data, BackButton } from "./styles";
 
 import * as icon from "react-icons/md";
 
@@ -16,8 +16,16 @@ interface ProfileProps {
 }
 
 export function Profile({ user }: ProfileProps) {
+
+  function handleBackMainPage(){
+    window.location.href = "/";
+  }
+
   return (
     <Container>
+      <BackButton onClick={handleBackMainPage}>
+        <icon.MdArrowBack size={32} />
+      </BackButton>
       <Header>
         <Picture src={user.avatar_url} />
         <Login>{user.login}</Login>
@@ -45,7 +53,9 @@ export function Profile({ user }: ProfileProps) {
         {user.blog && (
           <Data>
             <icon.MdLink size={20} />
-            <a href={user.blog} target="_blank" rel="noreferrer">{user.blog}</a>
+            <a href={user.blog} target='_blank' rel='noreferrer'>
+              {user.blog}
+            </a>
           </Data>
         )}
       </Inner>

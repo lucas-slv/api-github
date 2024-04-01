@@ -1,7 +1,7 @@
 import { Button, Container, Form, Input, Logo, Title } from "./styles";
 import logo from "../../assets/images/github-logo.svg";
 import * as Icon from "react-icons/md";
-import { KeyboardEventHandler, ReactEventHandler, useState } from "react";
+import { useState } from "react";
 
 export function MainPage() {
   const [login, setLogin] = useState("");
